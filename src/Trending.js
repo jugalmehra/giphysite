@@ -22,7 +22,7 @@ function Trending() {
     }
     return currentgifs.map(el => {
       return (
-        <Cards gifurl={el.images.fixed_height.url} gifusername={el.username} avatarphoto={el.avatar_url} giftitle={el.title} gifdate={el.import_datetime} key={el.id} />
+        <Cards gifurl={el.images.fixed_height.url} gifusername={`AnonymousUser`} avatarphoto={el.avatar_url} giftitle={el.title} gifdate={el.import_datetime} key={el.id} />
       )
     })
   }
@@ -38,7 +38,7 @@ function Trending() {
         const results = await axios("https://api.giphy.com/v1/gifs/trending", {
           params: {
             api_key: "2kHnLOxPLxfkSzU1Dj63PhKBOnX1oIRF",
-            limit: "32"
+            limit: "48"
           }
         });
 

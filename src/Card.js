@@ -11,7 +11,7 @@ import './cards.css';
                 
                 <Card.Body style={{ padding: "5px" }}>
                     <div className="avatarbox"><img className="avatarphoto" src={image} />
-                    <div className="namedate"> {gifusername} {"\n"}<span> {gifdate} </span></div>
+                    <Card.Title className="namedate"> {gifusername} {"\n"}<span> {gifdate} </span></Card.Title>
                     </div>
                     
                     <Card.Text>

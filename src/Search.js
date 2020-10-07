@@ -8,6 +8,7 @@ function Search() {
 
   const [searchgif, setSearchgif] = useState("");
   const [searchdata, setSearchdata] = useState([])
+  const [isloading, setIsloading] = useState(false);
   const [currentpage, setCurrentpage] = useState(1)
   const [gifsperpage, setGifsperpage] = useState(8)
   const indexoflastgif = currentpage*gifsperpage
@@ -15,9 +16,12 @@ function Search() {
   const currentgifs = searchdata.slice(indexoffirstgif, indexoflastgif)
 
   const rendersearchgif = () => {
+    if(isloading){
+      return <p> please wait......</p>
+    }
     return currentgifs.map(item => {
       return (
-        <Cards gifurl={item.images.fixed_height.url} gifusername={item.username} avatarphoto={item.avatar_url} giftitle={item.title} gifdate={item.import_datetime} key={item.id} />
+        <Cards gifurl={item.images.fixed_height.url} gifusername={`Anonymoususer`} avatarphoto={item.avatar_url} giftitle={item.title} gifdate={item.import_datetime} key={item.id} />
       )
     })
   }
@@ -32,18 +36,20 @@ function Search() {
 
   const handlesubmit = async (event) => {
     event.preventDefault();
+    setIsloading(true)
     
 
       try{
         const searchresults = await axios("https://api.giphy.com/v1/gifs/search", {
         params: {
           api_key: "2kHnLOxPLxfkSzU1Dj63PhKBOnX1oIRF",
-          limit: 32,
+          limit: 48,
           q: searchgif
         }
       });
       setSearchdata(searchresults.data.data);
       console.log(searchdata)
+      setIsloading(false)
       }catch(err){
         console.log(err)
       }
