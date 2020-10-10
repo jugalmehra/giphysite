@@ -9,15 +9,18 @@
     width: 1300px;
     height: 800px;
     position: center;
-    background-color: rgb(194, 190, 190);
+    
     margin-left: 280px;
 
+}
+#forsinglegif{
+    height: 400px;
 }
 .singlegif{
     padding: 5px;
     background-color: white;
     margin: 10px;
-    box-shadow: grey 5px 4px;
+    box-shadow: grey 5px 4px ;
     width: 300px;
     border-radius: 7px;
    
@@ -74,4 +77,9 @@ p{
 
 h1{
     margin-left: 800px;
+    font-family: "Lucida Console", Courier, monospace;
+    
+}
+#forgifpage{
+    background-color: rgb(214, 210, 210);
 }

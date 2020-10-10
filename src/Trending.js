@@ -21,8 +21,9 @@ function Trending() {
       return <p> please wait......</p>
     }
     return currentgifs.map(el => {
+      var date = (el.import_datetime).split(" ")
       return (
-        <Cards gifurl={el.images.fixed_height.url} gifusername={`AnonymousUser`} avatarphoto={el.avatar_url} giftitle={el.title} gifdate={el.import_datetime} key={el.id} />
+        <Cards gifurl={el.images.fixed_height.url} gifusername={`AnonymousUser`} avatarphoto={el.avatar_url} giftitle={el.title} gifdate={date[0]} key={el.id} />
       )
     })
   }
@@ -68,7 +69,7 @@ function Trending() {
   return (
     <>
       <h1>Trending Gifs</h1>
-      <div className="gifcontainer">
+      <div className="gifcontainer" id="forgifpage">
         {rendergif()}
         
       </div>

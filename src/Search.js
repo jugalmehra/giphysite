@@ -20,8 +20,9 @@ function Search() {
       return <p> please wait......</p>
     }
     return currentgifs.map(item => {
+      var date = (item.import_datetime).split(" ")
       return (
-        <Cards gifurl={item.images.fixed_height.url} gifusername={`Anonymoususer`} avatarphoto={item.avatar_url} giftitle={item.title} gifdate={item.import_datetime} key={item.id} />
+        <Cards gifurl={item.images.fixed_height.url} gifusername={`Anonymoususer`} avatarphoto={item.avatar_url} giftitle={item.title} gifdate={date[0]} key={item.id} />
       )
     })
   }
@@ -36,23 +37,30 @@ function Search() {
 
   const handlesubmit = async (event) => {
     event.preventDefault();
-    setIsloading(true)
     
-
-      try{
-        const searchresults = await axios("https://api.giphy.com/v1/gifs/search", {
-        params: {
-          api_key: "2kHnLOxPLxfkSzU1Dj63PhKBOnX1oIRF",
-          limit: 48,
-          q: searchgif
+    
+      const gifname = searchgif.trim();
+      if(gifname!==''){
+        setIsloading(true)
+        try{
+          const searchresults = await axios("https://api.giphy.com/v1/gifs/search", {
+          params: {
+            api_key: "2kHnLOxPLxfkSzU1Dj63PhKBOnX1oIRF",
+            limit: 48,
+            q: searchgif
+          }
+        });
+        setSearchdata(searchresults.data.data);
+        console.log(searchdata)
+        setIsloading(false)
+        }catch(err){
+          console.log(err)
         }
-      });
-      setSearchdata(searchresults.data.data);
-      console.log(searchdata)
-      setIsloading(false)
-      }catch(err){
-        console.log(err)
+
+      }else{
+        alert("enter a valid input");
       }
+      
       
     
   }

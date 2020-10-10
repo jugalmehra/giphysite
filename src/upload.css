@@ -1,0 +1,12 @@
+#previewimg{
+    height: 400px;
+    width: 400px;
+}
+form{
+    display: inline-block;
+    margin-left: 800px;
+    margin-top: 50px;
+}
+.previewarea{
+    margin-left: 800px;
+}
